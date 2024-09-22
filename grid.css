@@ -1,25 +1,43 @@
+form {
+    display: inline-grid;
+    grid-template-rows: repeat(7, 6.25rem);
+    grid-template-columns: 1fr;
+    row-gap: 1.88rem;
+}
+
+body {
+display: flex;
+justify-content: center;
+}
+
 div {
     display: flex;
-    margin: 30px;
+    height: 100px;
     background-color: brown;        
     color: white;
     text-align: center;
     font-weight: bold;
 }
 
-body {
-    display: inline-grid;
-    width: 37.5rem;
-    grid-template-rows: repeat(5, 100px);
-    grid-template-columns: 1fr 1fr;
-}
 
-.three, .six, .seven {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-column: span 2;
-}
+@media screen and (min-width:769px) {
+    form {
+        width: 37.5rem;
+        grid-template-rows: repeat(5, 100px);
+        grid-template-columns: 1fr 1fr;
+    }
 
-.one, .two, .four, .five {
-    justify-content: center;
+    .three, .six, .seven {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-column: span 2;
+    }
+    
+    .one, .two, .four, .five {
+        justify-content: center;
+    }
+
+    div {
+        margin: 30px;
+    }
 }
