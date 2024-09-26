@@ -1,52 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Contact form</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="success_msg">
+        <p> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21"><path fill="#fff" d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"/></svg>
+            Message Sent!
+            <br>
+            Thanks for completing the form. We'll be in touch soon!
+        </p>
+    </div>
+    <form class="contact_form">
+        <div class="zero">
+            <h1 tabindex="0">Contact us</h1>
+        </div>
 
-  Contact Us
+        <div class="one">
+            <label id="label_first_name" for="first_name">First Name *</label>
+            <input id="first_name" type="text" name="first_name" title="Enter your first name" placeholder="Enter your first name" required minlength="2" maxlength="30" pattern="[A-Za-z]+" aria-labelledby="label_first_name" aria-required="true" tabindex="0"/>
+            <p class="error_msg">This field is required.</p>
+        </div>
 
-  First Name
-  This field is required
+        <div class="two">
+            <label id="label_last_name" for="last_name">Last Name *</label>
+            <input id="last_name" type="text" name="last_name" title="Enter your last name" placeholder="Enter your last name" required minlength="2" maxlength="30" pattern="[A-Za-z]+" aria-labelledby="label_last_name" aria-required="true" tabindex="0"/>
+            <p class="error_msg">This field is required.</p>
+        </div>
 
-  Last Name
-  This field is required
+        <div class="three">
+            <label id="label_email" for="email">Email Address *</label>
+            <input id="email" type="email" name="email" aria-labelledby="label_email" required aria-required="true">
+        </div>
 
-  Email Address
-  Please enter a valid email address
-  This field is required
+        <div class="four">
+            <fieldset>
+                <legend>Query Type *</legend>
 
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
+                    <label for="query_general" tabindex="0">General Enquiry
+                        <input type="radio" id="query_general" name="query" title="Select this for general inquiries" value="general" required>
+                        <div class="radio_btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21"><path fill="#0C7D69" d="M10 .75a9.75 9.75 0 1 0 9.75 9.75A9.76 9.76 0 0 0 10 .75Zm0 18a8.25 8.25 0 1 1 8.25-8.25A8.26 8.26 0 0 1 10 18.75Zm5.25-8.25a5.25 5.25 0 1 1-10.499 0 5.25 5.25 0 0 1 10.499 0Z"/></svg>
+                        </div>
+                    </label>
+                    </div>
+                    <div class="container_support" tabindex="0">
+                        <input type="radio" id="query_support" name="query" title="Select this for support requests" value="support" required>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21"><path fill="#0C7D69" d="M10 .75a9.75 9.75 0 1 0 9.75 9.75A9.76 9.76 0 0 0 10 .75Zm0 18a8.25 8.25 0 1 1 8.25-8.25A8.26 8.26 0 0 1 10 18.75Zm5.25-8.25a5.25 5.25 0 1 1-10.499 0 5.25 5.25 0 0 1 10.499 0Z"/></svg>
+                        <label for="query_support">Support Request</label>
+                    </div>
+            </fieldset>
+        </div>  
 
-  Message
-  This field is required
+        <div class="five">
+                <label id="label_message" for="message">Message *</label>
+                <textarea id="message" name="message" rows="15" required aria-required="true" aria-describedby="message-help" placeholder="Write your message here..."></textarea>
+                <small id="message_help">Please provide as much detail as possible</small>      
+        </div>
 
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
+        <div class="six">
+            <label for="checkbox" id="label_checkbox">
+                <input id="checkbox" type="checkbox" name="consent" tabindex="0">
+                I consent to being contacted by the team *
+            </label>
+        </div>
 
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+        <div class="seven">
+            <button type="submit" tabindex="0">
+                Submit
+            </button>
+        </div>
+    </form>
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+        Coded by <a href="#">Your Name Here</a>.
+      </div>
+    <script src="script.js"></script>
 </body>
 </html>
