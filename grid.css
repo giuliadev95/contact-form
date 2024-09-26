@@ -1,33 +1,264 @@
-form {
-    display: inline-grid;
-    grid-template-rows: repeat(7, 6.25rem);
-    grid-template-columns: 1fr;
-    row-gap: 1.88rem;
-}
-
+/* Parents: body, pop-up's container, form, divs */
 body {
-display: flex;
-justify-content: center;
-}
-
-div {
     display: flex;
-    height: 100px;
-    background-color: brown;        
-    color: white;
-    text-align: center;
-    font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:  hsl(148, 38%, 91%);
+    box-sizing: border-box;
+}
+
+#success_msg {
+    position: fixed;         
+    top: 0rem;               
+    left: 50%;               
+    transform: translateX(-50%);
+    background-color: hsl(148, 38%, 30%); 
+    color: white;         
+    padding: 1rem;          
+    border-radius: 0.5rem;   
+    width: auto;             
+    max-width: 90%;          
+    display: flex;          
+    justify-content: center; 
+    align-items: center;     
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;  
+    display: none;            
+    animation: fadeInOut 5s ease forwards;
+}
+
+#success_msg.show {
+    display: flex;
+    animation: fadeInOut 5s ease forwards;
+}
+
+form {
+    margin: 5.88rem auto;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    display: inline-grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    row-gap: 1.25rem;
+    color: hsl(187, 24%, 22%);
+    background-color: white;
+    font-family: "Karla", sans-serif;
+    font-weight: 400;
+}
+
+.one, .two {
+    grid-column: span 1;
+}
+
+.zero,
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    align-self: stretch;
+    border: none;
+}
+
+.container_general,
+.container_support {
+    display: flex;
+    flex-direction: row; 
+    margin: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    height: 1.75rem;
+    background-color: white;
+    border: 1px solid hsl(187, 24%, 22%);
+    border-radius: 10px;
+}
+
+textarea {
+    
+    margin: 0rem 0.5rem;
+    border-radius: 0.5rem;
+    align-self: stretch;
 }
 
 
+/* Children:
+/* Typography */
+h1 {
+    margin: 0px;
+    color: hsl(187, 24%, 22%);
+}
+
+p {
+    padding: 0 0.75rem;
+}
+
+#success_msg p {
+    margin: 0;              
+    font-size: 1rem;        
+    text-align: left;         
+}
+
+/* Labels, inputs, radio buttons, submit button */
+div:nth-child(5) {
+    height: auto;
+}
+
+label {
+    font-size: 1rem;
+}
+
+#label_first_name,
+#label_last_name,
+#label_email,
+#label_message,
+#message_help,
+legend {
+    padding: 0 0.75rem;
+}
+
+#label_first_name, 
+#first_name {
+    height: 1.25rem;
+}
+
+#label_checkbox {
+    display: flex;
+}
+
+input {
+    height: 1.25rem;
+    padding: 0.75rem;
+    margin: 0rem 0.5rem;
+    border-radius: 0.5rem;
+    align-self: stretch;
+    border: 1px solid black;
+}
+
+button[type="submit"] {
+    height: 2.75rem;
+    padding: 0.75rem;
+    margin: 0rem 0.5rem;
+    border-radius: 0.5rem;
+    align-self: stretch;
+    color: white;
+    background-color:hsl(169, 82%, 27%) ;
+    font-weight: 400;
+    border: none;
+}
+
+
+/*  Focus, check, valid, and invalid states for inputs, textarea, and buttons */
+/* Inputs valid, invalid, on focus, on hover  */
+input:valid {
+    border: 2px solid hsl(169, 82%, 27%);
+    outline: none;
+}
+
+input:invalid + .error_msg {
+    color: hsl(0, 66%, 54%);
+    display: block;
+}
+
+input:focus,
+textarea:focus {
+    border: 2px solid hsl(169, 82%, 27%);
+    cursor: pointer;
+    outline: none;
+}
+
+.container_general:focus,
+.container_support:focus {
+    border: 2px solid hsl(169, 82%, 27%);
+    background-color: hsl(148, 38%, 91%);
+    cursor: pointer;
+    outline: none;
+}
+
+input:hover,
+textarea:hover,
+.container_general:hover,
+.container_support:hover {
+    border: 2px solid hsl(169, 82%, 27%);
+    cursor: pointer;
+}
+
+/* .green class toggled when the radio buttons are/aren't selected */
+.container_general.green,
+.container_support.green {
+    background-color:  hsl(148, 38%, 91%);
+    border: 2px solid hsl(169, 82%, 27%);
+}
+
+/* Checkbox on focus */
+input[type="checkbox"]:focus {
+    outline: 2px solid hsl(169, 82%, 27%);
+    box-shadow: 0 0 5px 2px green; 
+    cursor: pointer;
+}
+
+/* Checkbox on check */
+input[type="checkbox"]:checked {
+    border: 2px solid hsl(169, 82%, 27%);
+    box-shadow: 0 0 5px 2px green; 
+    background-color: hsl(148, 38%, 91%);
+}
+
+
+/* Submit button on focus and hover */
+button[type="submit"]:focus {
+    box-shadow: 0 0 5px 2px green;
+}
+
+button[type="submit"]:hover {
+    background-color:hsl(187, 24%, 22%);
+}
+
+/* Error message for invalid input */
+.error_msg {
+    display: block;
+    color: white;
+    font-size: 0.7rem;
+}
+
+input:invalid + .error_msg {
+    color: hsl(0, 66%, 54%);
+    display: block;
+}
+
+
+/* Animation for the pop-up success message */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* One media query for tablets up to laptops */
 @media screen and (min-width:769px) {
     form {
         width: 37.5rem;
-        grid-template-rows: repeat(5, 100px);
         grid-template-columns: 1fr 1fr;
     }
 
-    .three, .six, .seven {
+    .zero, .three, .four, .five, .six, .seven {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-column: span 2;
@@ -37,7 +268,15 @@ div {
         justify-content: center;
     }
 
-    div {
-        margin: 30px;
+    .radio-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    fieldset {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 }
+
