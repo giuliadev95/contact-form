@@ -35,6 +35,9 @@ Users should be able to:
 
 ### Screenshot
 
+![](./assets/screenshots/mb.png)
+![](./assets/screenshots/success_msg_mb.png)
+![](./assets/screenshots/dsk.png)
 ![](./assets/screenshots/success_msg%20dsk.png)
 
 
@@ -63,26 +66,29 @@ I chose this challenge to build it with the CSS Grid, so to get familiar with th
 
 I followed a responsive mobile-first approach while styling this contact form with CSS Grid: 
 
-- I gave an initial "1-column grid layout" to the form parent element, to each child of the form, along with a  "span of 2": this allowed every element to stretch in its row on mobile screens. 
+- I assigned an initial "1 column grid layout" to the form (the parent element), to allow each child to stretch into its own row when on mobile screens.
 
-- I created a media query for tablets and laptops (min-width: 769px) and changed the grid layout of the form parent element. I gave a "2-columns" layout and used the span = 2 property for the children who had to stay in 1 row, and the span = 1 property for those who had to stay just in their column (that is to say, a half of their row, span = 1). I matched span =1 with grid-column-start=1 and green-column-end=1 as it was the only way I managed to determine simmetry among the two halves of the row.
+- I created a media query for tablets and laptops (min-width: 769px) and changed the grid layout of the form to "1fr 1fr", that is to say "two identical columns". I then assigned the "span 2" property to the children who had to occupy the entire row, and, on the other hand, I assigned a "span 1" property to those children who had to stay just in one column of the two. I matched "span 1" property with "grid-column-start: 1" and "green-column-end: 2" adjust proportions, making adjacent children stay in exactly one half of their row.
 
 ```css
 /* mobile screen */
-form {                                         /* parent grid layout */
+form {
     display: inline-grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr;
     row-gap: 1.25rem;
   }
 
+  then =>
+
 /* tablets and laptops screen */
   @media screen and (min-width:769px) {
-    form {                                     /* changed parent grid layout */
-          grid-template-columns: 1fr 1fr;
+    form {
+        width: 37.5rem;
+        grid-template-columns: 1fr 1fr;
     }
 
-    .zero, .three, .four, .five, .six, .seven { /* childrens' classes */
+    .zero, .three, .four, .five, .six, .seven {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-column: span 2;
@@ -90,17 +96,45 @@ form {                                         /* parent grid layout */
   }
 ```
 
-2) JavaScript function to change the bg color of the radio buttons' field when selected
+2) JavaScript function to change the background color of the radio buttons' containers when selected.
+```js
+function addGreenBgtoGeneral() {
+    if(GENERAL_BTN.checked) {
+        GENERAL_BTN_CONTAINER.classList.add("green");
+        SUPPORT_BTN_CONTAINER.classList.remove("green");
+        console.clear();
+        console.log(`${GENERAL_BTN.id} is checked.`);
+        console.log(`${SUPPORT_BTN.id} isn't checked.`)
+    }
+}
+```
 
-3) JavaScript function to display a popup message when the form gets submitted
+3) JavaScript function to display a popup message when the form gets submitted: this was interesting as I first added a ".show" class to the popup msg in order to make it visible, then I also had to adjust the animation effect it appeared / desappeared with.
+
+```js
+POPUP.classList.add("show"); // Show popup msg
+```
+then =>
+
+```css
+  #success_msg.show {
+      display: flex;
+      animation: fadeInOut 5s ease forwards;
+  }
+  
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+```
 
 
 
 ### Useful resources
 
-- [CSS Grid Layout Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-
-
+- [CSS Grid Layout Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) - This helped me studying how the GRID layout works.
 
 ## Author
 
