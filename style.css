@@ -186,7 +186,6 @@ textarea:focus {
 .container_general:focus,
 .container_support:focus {
     border: 2px solid hsl(169, 82%, 27%);
-    background-color: hsl(148, 38%, 91%);
     cursor: pointer;
     outline: none;
 }
@@ -197,6 +196,7 @@ textarea:hover,
 .container_support:hover {
     border: 2px solid hsl(169, 82%, 27%);
     cursor: pointer;
+    background-color:  hsl(148, 38%, 91%);
 }
 
 /* .green class toggled when the radio buttons are/aren't selected */
@@ -279,24 +279,3 @@ input:invalid + .error_msg {
         grid-template-columns: 1fr 1fr;
     }
 }
-
-/* Further customization */
-input[type="radio"] {
-    display: none;
-}
-
-label[for="query_general"] {
-    border: black 2px solid;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: left;
-    gap: 10px;
-    margin: 0.5rem;
-    padding: 0.5rem 0.5rem;
-    height: 1.75rem;
-    border-radius: 10px;
-}
-
-/* devo decidere quale grafia è meglio se label for o quella del secondo elemento
-di conseguenza stilizzo il bottone ma deve csostituirsi all'altro quando è attivo mi sa
