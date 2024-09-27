@@ -47,10 +47,6 @@ form {
     font-weight: 400;
 }
 
-.one, .two {
-    grid-column: span 1;
-}
-
 .zero,
 .one,
 .two,
